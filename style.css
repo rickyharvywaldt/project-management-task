@@ -93,6 +93,10 @@ th {
     background-color: #e3e3e3;
 }
 
+th:hover .delete {
+    opacity: 1;
+}
+
 td {
     padding-left: 18px;
 }
@@ -108,7 +112,6 @@ td:hover {
     cursor: pointer;
 }
 
-th:hover,
 td:hover .delete {
     opacity: 1;
 }
