@@ -84,17 +84,24 @@ form {
   align-items: center;
 }
 
+input {
+  padding: 5px;
+}
+
 .buttons {
   display: inline-block;
+  margin-left: 5px;
 }
 
 button {
     cursor: pointer;
+    padding: 5px;
 }
 
 .material-symbols-outlined {
     vertical-align: middle;
     margin: 0 5px;
+    padding-bottom: 3px;
 }
 
 .divider {
@@ -159,14 +166,15 @@ i {
 
 .extra-option:hover {
   opacity: 1;
+  height: 100vh;
 }
 
 .extra-option div:hover {
-  color: #111;
+  color: #095776;
 }
 
 .extra-option div:hover button {
-  color: #111;
+  color: #095776;
 }
 
 .extra-button {

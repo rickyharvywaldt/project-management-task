@@ -15,12 +15,11 @@
             <div class="left">
                 <form id="form">
                     <input type="text" name="task" id="task" placeholder="Add new task">
-                    <span class="material-symbols-outlined">add_circle</span>
                     <div id="msg"></div>
                     <div class="buttons">
-                        <button type="submit" class="button" id="button_task">Task</button>
-                        <span class="divider">|</span>
-                        <button type="submit" class="button" id="button_group">Group of Tasks</button>
+                        <button type="submit" class="button" id="button_task">+ Task</button>
+                        <span>|</span>
+                        <button type="submit" class="button" id="button_group">+ Group of Tasks</button>
                     </div>
                 </form>
             </div>
@@ -29,17 +28,17 @@
                     <div class="group-of-tasks">
                         <p contenteditable="true" onKeyDown="onEnter(this)">First Group (click to rename)</p>
                         <span class="options">
-                            <i onClick="editTask(this)" class="fas fa-edit"></i>
-                            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+                            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+                            <i class="fas fa-ellipsis-v fa-sm"></i>
                         </span>
                     </div>
                     <div class="single-tasks">
                         <p contenteditable="true" onKeyDown="onEnter(this)">First Task (click to rename)</p>
                         <span class="options">
-                            <i onClick="editTask(this)" class="fas fa-edit"></i>
-                            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+                            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+                            <i class="fas fa-ellipsis-v fa-sm"></i>
                         </span>
                     </div>
                 </div>

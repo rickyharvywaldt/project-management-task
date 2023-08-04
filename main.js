@@ -24,9 +24,16 @@ buttonNewTask.addEventListener('click', (e) => {
     createNewTaskSingle();
 });
 
+buttonNewGroup.addEventListener('click', (e) => {
+    e.preventDefault();
+    createNewTaskGroup();
+});
+
 let formValidationSingle = () => {
     if(task.value ===""){
-        msg.innerHTML = "Task field is empty"
+        task.style.border = "2px solid";
+        task.style.borderColor = "#26a7de";
+        task.style.borderRadius = "5px";
     } else {
         acceptDataSingle();
     }
@@ -34,7 +41,9 @@ let formValidationSingle = () => {
 
 let formValidationGroup = () => {
     if(task.value ===""){
-        msg.innerHTML = "Task field is empty"
+        task.style.border = "2px solid";
+        task.style.borderColor = "#26a7de";
+        task.style.borderRadius = "5px";
     } else {
         acceptDataGroup();
     }
@@ -57,9 +66,9 @@ let createTaskSingle = () => {
     <div class="single-tasks">
         <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
         <span class="options">
-            <i onClick="editTask(this)" class="fas fa-edit"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
-            <i class="fas fa-ellipsis-v"></i>
+            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+            <i class="fas fa-ellipsis-v fa-sm"></i>
         </span>
     </div>
     `;
@@ -72,9 +81,9 @@ let createNewTaskSingle = () => {
     <div class="single-tasks">
         <p contenteditable="true" onKeyDown="onEnter(this)" id="new_task"></p>
         <span class="options">
-            <i onClick="editTask(this)" class="fas fa-edit"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
-            <i class="fas fa-ellipsis-v"></i>
+            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+            <i class="fas fa-ellipsis-v fa-sm"></i>
         </span>
     </div>
     `;
@@ -86,14 +95,28 @@ let createTaskGroup = () => {
     <div class="group-of-tasks">
         <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
         <span class="options">
-            <i onClick="editTask(this)" class="fas fa-edit"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
-            <i class="fas fa-ellipsis-v"></i>
+            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+            <i class="fas fa-ellipsis-v fa-sm"></i>
         </span>
     </div>
     `;
     task.value = "";
     task.focus();
+};
+
+let createNewTaskGroup = () => {
+    taskList.innerHTML += `
+    <div class="group-of-tasks">
+        <p contenteditable="true" onKeyDown="onEnter(this)" id="new_task_group"></p>
+        <span class="options">
+            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+            <i class="fas fa-ellipsis-v fa-sm"></i>
+        </span>
+    </div>
+    `;
+    document.getElementById('new_task_group').focus();
 };
 
 let deleteTask = (e) => {
@@ -102,6 +125,7 @@ let deleteTask = (e) => {
 
 let editTask = (e) => {
     task.value = e.parentElement.previousElementSibling.innerHTML;
+    // document.getElementById('new_task_group').focus();
     e.parentElement.parentElement.remove();
 };
 
