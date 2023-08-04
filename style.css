@@ -68,7 +68,20 @@ svg {
 }
 
 .container {
-    margin: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+  display: flex;
+}
+
+form {
+  width: 45%;
+}
+
+.buttons {
+  text-align: right;
 }
 
 button {
@@ -82,6 +95,59 @@ button {
 
 .divider {
     font-size: 20px;
+}
+
+#task_group {
+  width: 400px;
+}
+
+#task_group div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 5px;
+  background-color: #e3e3e3;
+}
+
+#task_group div:hover {
+  text-decoration: underline;
+  background-color: #f3f3f3;
+}
+
+#task_group div:hover i {
+  opacity: 1;
+}
+
+#task_items {
+  width: 400px;
+  padding-left: 18px;
+}
+
+i {
+  cursor: pointer;
+  opacity: 0;
+}
+
+#task_items div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 5px; 
+  margin: 5px 0;
+}
+
+#task_items div:hover {
+  text-decoration: underline;
+  background-color: #f3f3f3;
+}
+
+#task_items div:hover i {
+  opacity: 1;
+}
+
+.options {
+  display: flex;
+  gap: 5px;
 }
 
 table {

@@ -5,25 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Management | Task</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
+        <h1>Not Gantt</h1>
         <div class="container">
-            <div>
-                <input type="text" name="task" id="task" placeholder="Add new task">
-                <span class="material-symbols-outlined">add_circle</span>
-                <button type="submit" class="button" id="button_task">Task</button>
-                <span class="divider">|</span>
-                <button type="submit" class="button" id="button_group">Group of Tasks</button>
+            <div class="left">
+                <form id="form">
+                    <input type="text" name="task" id="task" placeholder="Add new task">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    <div id="msg"></div>
+                    <div class="buttons">
+                        <button type="submit" class="button" id="button_task">Task</button>
+                        <span class="divider">|</span>
+                        <button type="submit" class="button" id="button_group">Group of Tasks</button>
+                    </div>
+                </form>
             </div>
-            <div>
-                <table id="task_items">
-
-                </table>
+            <div class="right">
+                <div id="task_group">
+                    <div>
+                        <p>First Group (click to rename)</p>
+                        <span class="options">
+                            <i onClick="editTask(this)" class="fas fa-edit"></i>
+                            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
+                        </span>
+                    </div>
+                </div>
+                <div id="task_items">
+                    <div>
+                        <p>First Task (click to rename)</p>
+                        <span class="options">
+                            <i onClick="editTask(this)" class="fas fa-edit"></i>
+                            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
