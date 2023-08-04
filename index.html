@@ -10,8 +10,8 @@
 </head>
 <body>
     <main>
-        <h1>Not Gantt</h1>
         <div class="container">
+            <h1>Not Gantt</h1>
             <div class="left">
                 <form id="form">
                     <input type="text" name="task" id="task" placeholder="Add new task">
@@ -27,19 +27,21 @@
             <div class="right">
                 <div id="task_group">
                     <div>
-                        <p>First Group (click to rename)</p>
+                        <p contenteditable="true">First Group (click to rename)</p>
                         <span class="options">
                             <i onClick="editTask(this)" class="fas fa-edit"></i>
                             <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </span>
                     </div>
                 </div>
                 <div id="task_items">
                     <div>
-                        <p>First Task (click to rename)</p>
+                        <p contenteditable="true">First Task (click to rename)</p>
                         <span class="options">
                             <i onClick="editTask(this)" class="fas fa-edit"></i>
                             <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </span>
                     </div>
                 </div>

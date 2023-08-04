@@ -70,18 +70,22 @@ svg {
 .container {
     display: flex;
     flex-direction: column;
+    margin: 50px;
 }
 
-.left {
-  display: flex;
+h1 {
+  font-size: 24px;
+  margin: 25px;
 }
 
 form {
   width: 45%;
+  display: flex;
+  align-items: center;
 }
 
 .buttons {
-  text-align: right;
+  display: inline-block;
 }
 
 button {
@@ -90,7 +94,7 @@ button {
 
 .material-symbols-outlined {
     vertical-align: middle;
-    padding-bottom: 3px;
+    margin: 0 5px;
 }
 
 .divider {
@@ -107,11 +111,11 @@ button {
   justify-content: space-between;
   padding: 8px 5px;
   background-color: #e3e3e3;
+  margin-top: 5px;
 }
 
 #task_group div:hover {
   text-decoration: underline;
-  background-color: #f3f3f3;
 }
 
 #task_group div:hover i {
@@ -150,34 +154,3 @@ i {
   gap: 5px;
 }
 
-table {
-    width: 52%;
-}
-
-th {
-    text-align: left;
-    background-color: #e3e3e3;
-}
-
-th:hover .delete {
-    opacity: 1;
-}
-
-td {
-    padding-left: 18px;
-}
-
-td:hover {
-    text-decoration: underline;
-    background-color: #f3f3f3;
-}
-
-.delete {
-    opacity: 0;
-    float: right;
-    cursor: pointer;
-}
-
-td:hover .delete {
-    opacity: 1;
-}
