@@ -25,9 +25,17 @@
                 </form>
             </div>
             <div class="right">
-                <div id="task_group">
-                    <div>
-                        <p contenteditable="true">First Group (click to rename)</p>
+                <div id="task_list">
+                    <div class="group-of-tasks">
+                        <p contenteditable="true" onKeyDown="onEnter(this)">First Group (click to rename)</p>
+                        <span class="options">
+                            <i onClick="editTask(this)" class="fas fa-edit"></i>
+                            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </span>
+                    </div>
+                    <div class="single-tasks">
+                        <p contenteditable="true" onKeyDown="onEnter(this)">First Task (click to rename)</p>
                         <span class="options">
                             <i onClick="editTask(this)" class="fas fa-edit"></i>
                             <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
@@ -35,15 +43,15 @@
                         </span>
                     </div>
                 </div>
-                <div id="task_items">
-                    <div>
-                        <p contenteditable="true">First Task (click to rename)</p>
-                        <span class="options">
-                            <i onClick="editTask(this)" class="fas fa-edit"></i>
-                            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
-                            <i class="fas fa-ellipsis-v"></i>
-                        </span>
-                    </div>
+                <div>
+                    <span class="extra-option">
+                        <div>
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <button type="submit" class="extra-button" id="button_task_input">Task</button>
+                            <span class="divider">|</span>
+                            <button type="submit" class="extra-button" id="button_group_input">Group of Tasks</button>
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>

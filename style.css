@@ -101,11 +101,11 @@ button {
     font-size: 20px;
 }
 
-#task_group {
+#task_list {
   width: 400px;
 }
 
-#task_group div {
+.group-of-tasks {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,17 +114,12 @@ button {
   margin-top: 5px;
 }
 
-#task_group div:hover {
+#task_list div:hover {
   text-decoration: underline;
 }
 
-#task_group div:hover i {
+#task_list div:hover i {
   opacity: 1;
-}
-
-#task_items {
-  width: 400px;
-  padding-left: 18px;
 }
 
 i {
@@ -132,20 +127,21 @@ i {
   opacity: 0;
 }
 
-#task_items div {
+.single-tasks {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 5px; 
   margin: 5px 0;
+  padding-left: 18px;
 }
 
-#task_items div:hover {
+.single-tasks:hover {
   text-decoration: underline;
   background-color: #f3f3f3;
 }
 
-#task_items div:hover i {
+.single-tasks:hover i {
   opacity: 1;
 }
 
@@ -153,4 +149,39 @@ i {
   display: flex;
   gap: 5px;
 }
+
+.extra-option {
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  color: #a3a3a3;
+}
+
+.extra-option:hover {
+  opacity: 1;
+}
+
+.extra-option div:hover {
+  color: #111;
+}
+
+.extra-option div:hover button {
+  color: #111;
+}
+
+.extra-button {
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  background-color: transparent;
+  color: #a3a3a3;
+}
+
+.extra-button:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+
 

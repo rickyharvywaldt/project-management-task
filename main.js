@@ -3,14 +3,11 @@ let task = document.getElementById('task');
 let msg = document.getElementById('msg');
 let taskItems = document.getElementById('task_items');
 let buttonTask = document.getElementById('button_task');
-let taskGroup = document.getElementById('task_group');
+let taskList = document.getElementById('task_list');
 let buttonGroup = document.getElementById('button_group');
-
-
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     formValidation();
-// });
+let newTask = document.getElementById('new_task');
+let buttonNewTask = document.getElementById('button_task_input')
+let buttonNewGroup = document.getElementById('button_group_input')
 
 buttonTask.addEventListener('click', (e) => {
     e.preventDefault();
@@ -20,6 +17,11 @@ buttonTask.addEventListener('click', (e) => {
 buttonGroup.addEventListener('click', (e) => {
     e.preventDefault();
     formValidationGroup();
+});
+
+buttonNewTask.addEventListener('click', (e) => {
+    e.preventDefault();
+    createNewTaskSingle();
 });
 
 let formValidationSingle = () => {
@@ -51,9 +53,9 @@ let acceptDataGroup = () => {
 };
 
 let createTaskSingle = () => {
-    taskItems.innerHTML += `
-    <div>
-        <p contenteditable="true">${data.text}</p>
+    taskList.innerHTML += `
+    <div class="single-tasks">
+        <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
         <span class="options">
             <i onClick="editTask(this)" class="fas fa-edit"></i>
             <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
@@ -65,10 +67,24 @@ let createTaskSingle = () => {
     task.focus();
 };
 
+let createNewTaskSingle = () => {
+    taskList.innerHTML += `
+    <div class="single-tasks">
+        <p contenteditable="true" onKeyDown="onEnter(this)" id="new_task"></p>
+        <span class="options">
+            <i onClick="editTask(this)" class="fas fa-edit"></i>
+            <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </span>
+    </div>
+    `;
+    document.getElementById('new_task').focus();
+};
+
 let createTaskGroup = () => {
-    taskGroup.innerHTML += `
-    <div>
-        <p contenteditable="true">${data.text}</p>
+    taskList.innerHTML += `
+    <div class="group-of-tasks">
+        <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
         <span class="options">
             <i onClick="editTask(this)" class="fas fa-edit"></i>
             <i onClick="deleteTask(this)" class="fas fa-trash-alt"></i>
@@ -89,4 +105,11 @@ let editTask = (e) => {
     e.parentElement.parentElement.remove();
 };
 
+function onEnter(targetElement) {
+targetElement.addEventListener("keydown", (e) => {
+    if(e.key === "Enter"){
+      targetElement.blur();
+    };
+  });
+};
 
