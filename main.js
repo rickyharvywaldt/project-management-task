@@ -1,3 +1,6 @@
+const sortableList = document.querySelector('.sortable-list');
+const items = sortableList.querySelectorAll('.item');
+
 let form = document.getElementById('form');
 let task = document.getElementById('task');
 let msg = document.getElementById('msg');
@@ -63,14 +66,16 @@ let acceptDataGroup = () => {
 
 let createTaskSingle = () => {
     taskList.innerHTML += `
-    <div class="single-tasks">
-        <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
-        <span class="options">
-            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
-            <i class="fas fa-ellipsis-v fa-sm"></i>
-        </span>
-    </div>
+    <li class="item" draggable="true">
+        <div class="single-tasks">
+            <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
+            <span class="options">
+                <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+                <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+                <i class="fas fa-ellipsis-v fa-sm"></i>
+            </span>
+        </div>
+    </li>
     `;
     task.value = "";
     task.focus();
@@ -78,28 +83,32 @@ let createTaskSingle = () => {
 
 let createNewTaskSingle = () => {
     taskList.innerHTML += `
-    <div class="single-tasks">
-        <p contenteditable="true" onKeyDown="onEnter(this)" id="new_task"></p>
-        <span class="options">
-            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
-            <i class="fas fa-ellipsis-v fa-sm"></i>
-        </span>
-    </div>
+    <li class="item" draggable="true">
+        <div class="single-tasks">
+            <p contenteditable="true" onKeyDown="onEnter(this)" id="new_task"></p>
+            <span class="options">
+                <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+                <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+                <i class="fas fa-ellipsis-v fa-sm"></i>
+            </span>
+        </div>
+    </li>
     `;
     document.getElementById('new_task').focus();
 };
 
 let createTaskGroup = () => {
     taskList.innerHTML += `
-    <div class="group-of-tasks">
-        <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
-        <span class="options">
-            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
-            <i class="fas fa-ellipsis-v fa-sm"></i>
-        </span>
-    </div>
+    <li class="item" draggable="true">
+        <div class="group-of-tasks">
+            <p contenteditable="true" onKeyDown="onEnter(this)">${data.text}</p>
+            <span class="options">
+                <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+                <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+                <i class="fas fa-ellipsis-v fa-sm"></i>
+            </span>
+        </div>
+    </li>
     `;
     task.value = "";
     task.focus();
@@ -107,14 +116,16 @@ let createTaskGroup = () => {
 
 let createNewTaskGroup = () => {
     taskList.innerHTML += `
-    <div class="group-of-tasks">
-        <p contenteditable="true" onKeyDown="onEnter(this)" id="new_task_group"></p>
-        <span class="options">
-            <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
-            <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
-            <i class="fas fa-ellipsis-v fa-sm"></i>
-        </span>
-    </div>
+    <li class="item" draggable="true">
+        <div class="group-of-tasks">
+            <p contenteditable="true" onKeyDown="onEnter(this)" id="new_task_group"></p>
+            <span class="options">
+                <i onClick="editTask(this)" class="fas fa-edit fa-sm"></i>
+                <i onClick="deleteTask(this)" class="fas fa-trash-alt fa-sm"></i>
+                <i class="fas fa-ellipsis-v fa-sm"></i>
+            </span>
+        </div>
+    </li>
     `;
     document.getElementById('new_task_group').focus();
 };
@@ -136,4 +147,27 @@ targetElement.addEventListener("keydown", (e) => {
     };
   });
 };
+
+items.forEach(item => {
+    item.addEventListener('dragstart', () => {
+        setTimeout(() => item.classList.add('dragging'), 0);
+    });
+    item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+    });
+});
+
+const initSortableList = (e) => {
+    e.preventDefault();
+    const draggingItem = sortableList.querySelector('.dragging');
+    const siblings = [...sortableList.querySelectorAll('.item:not(.dragging)')];
+
+    let nextSibling = siblings.find(sibling => {
+        return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+    });
+    sortableList.insertBefore(draggingItem, nextSibling);
+}
+
+sortableList.addEventListener('dragover', initSortableList);
+sortableList.addEventListener("dragenter", e => e.preventDefault());
 

@@ -67,6 +67,10 @@ svg {
   }
 }
 
+ol, ul {
+  list-style: none;
+}
+
 .container {
     display: flex;
     flex-direction: column;
