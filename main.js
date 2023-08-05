@@ -148,26 +148,45 @@ targetElement.addEventListener("keydown", (e) => {
   });
 };
 
-items.forEach(item => {
-    item.addEventListener('dragstart', () => {
-        setTimeout(() => item.classList.add('dragging'), 0);
-    });
-    item.addEventListener('dragend', () => {
-        item.classList.remove('dragging');
-    });
-});
+// Function to handle the "dragstart" and "dragend" events on list items
+const handleDragStart = (e) => {
+    const item = e.target.closest(".item");
+    if (item) {
+        // Adding dragging class to item after a delay
+        setTimeout(() => item.classList.add("dragging"), 0);
+    }
+};
 
+const handleDragEnd = (e) => {
+    const item = e.target.closest(".item");
+    if (item) {
+        // Removing dragging class from item on dragend event
+        item.classList.remove("dragging");
+    }
+};
+
+// Function to handle the "dragover" event on the sortable list
 const initSortableList = (e) => {
     e.preventDefault();
-    const draggingItem = sortableList.querySelector('.dragging');
-    const siblings = [...sortableList.querySelectorAll('.item:not(.dragging)')];
+    const draggingItem = sortableList.querySelector(".dragging");
+    // Getting all items except currently dragging and making array of them
+    let siblings = [...sortableList.querySelectorAll(".item:not(.dragging)")];
 
+    // Finding the sibling after which the dragging item should be placed
     let nextSibling = siblings.find(sibling => {
         return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
     });
-    sortableList.insertBefore(draggingItem, nextSibling);
-}
 
-sortableList.addEventListener('dragover', initSortableList);
+    // Inserting the dragging item before the found sibling
+    sortableList.insertBefore(draggingItem, nextSibling);
+};
+
+// Event delegation for "dragstart" and "dragend" events on list items
+sortableList.addEventListener("dragstart", handleDragStart);
+sortableList.addEventListener("dragend", handleDragEnd);
+
+// Event listener for "dragover" event on the sortable list
+sortableList.addEventListener("dragover", initSortableList);
 sortableList.addEventListener("dragenter", e => e.preventDefault());
+
 

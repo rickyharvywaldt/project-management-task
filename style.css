@@ -194,6 +194,17 @@ i {
   text-underline-offset: 2px;
 }
 
+.sortable-list {
+  cursor: move;
+}
+
+.item.dragging {
+  opacity: .6;
+}
+
+.item.dragging :where(.single-tasks, p) {
+  opacity: 0;
+}
 
 
 
